@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xml:id="{{ id }}"
+   xml:base="https://id.acdh.oeaw.ac.at/auden-musulin-papers">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="s">Audene Musulin Papers: A digital Edition</title>
+            <title level="a">{{ title }}</title>
+            <author>{{ sender }}</author>
+            <editor>
+               <name>Mayer, Sandra</name>
+               <name>Frühwirth, Timo</name>
+            </editor>
+            <funder>
+               <name>FWF - Der Wissenschaftsfonds</name>
+               <address>
+                  <street>Sensengasse 1</street>
+                  <postCode>1090 Wien</postCode>
+                  <placeName>
+                     <country>A</country>
+                     <settlement>Wien</settlement>
+                  </placeName>
+               </address>
+            </funder>
+         </titleStmt>
+         <editionStmt>
+            <edition>AMP</edition>
+            <respStmt>
+               <resp>Transkription und Kommentierung</resp>
+               <name>Mayer, Sandra</name>
+               <name>Frühwirth, Timo</name>
+            </respStmt>
+         </editionStmt>
+         <publicationStmt>
+            <publisher>Austrian Centre for Digital Humanities and Cultural Heritage</publisher>
+            <pubPlace>Vienna</pubPlace>
+            <date when="2021">2021</date>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/deed.de">
+                  <p>Sie dürfen: Teilen — das Material in jedwedem Format oder Medium
+                     vervielfältigen und weiterverbreiten Bearbeiten — das Material remixen,
+                     verändern und darauf aufbauen und zwar für beliebige Zwecke, sogar
+                     kommerziell.</p>
+                  <p>Der Lizenzgeber kann diese Freiheiten nicht widerrufen solange Sie sich an die
+                     Lizenzbedingungen halten. Unter folgenden Bedingungen:</p>
+                  <p>Namensnennung — Sie müssen angemessene Urheber- und Rechteangaben machen, einen
+                     Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden. Diese
+                     Angaben dürfen in jeder angemessenen Art und Weise gemacht werden, allerdings
+                     nicht so, dass der Eindruck entsteht, der Lizenzgeber unterstütze gerade Sie
+                     oder Ihre Nutzung besonders. Keine weiteren Einschränkungen — Sie dürfen keine
+                     zusätzlichen Klauseln oder technische Verfahren einsetzen, die anderen
+                     rechtlich irgendetwas untersagen, was die Lizenz erlaubt.</p>
+                  <p>Hinweise:</p>
+                  <p>Sie müssen sich nicht an diese Lizenz halten hinsichtlich solcher Teile des
+                     Materials, die gemeinfrei sind, oder soweit Ihre Nutzungshandlungen durch
+                     Ausnahmen und Schranken des Urheberrechts gedeckt sind. Es werden keine
+                     Garantien gegeben und auch keine Gewähr geleistet. Die Lizenz verschafft Ihnen
+                     möglicherweise nicht alle Erlaubnisse, die Sie für die jeweilige Nutzung
+                     brauchen. Es können beispielsweise andere Rechte wie Persönlichkeits- und
+                     Datenschutzrechte zu beachten sein, die Ihre Nutzung des Materials entsprechend
+                     beschränken.</p>
+               </licence>
+            </availability>
+         </publicationStmt>
+         <seriesStmt>
+            <p>Machine-Readable Transcriptions of the Auden Musulin Papers</p>
+         </seriesStmt>
+         <sourceDesc>
+            <listWit>
+               <witness n="1">
+                  <msDesc>
+                     <msIdentifier>
+                        <country>A</country>
+                        <settlement>Wien</settlement>
+                        <repository>Theatermuseum</repository>
+                        <idno>HS AM 23389 Ba</idno>
+                     </msIdentifier>
+                  </msDesc>
+               </witness>
+            </listWit>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="{{ lang_code }}">{{ language }}</language>
+         </langUsage>
+         <correspDesc>
+            <correspAction type="sent">
+               <persName ref="#{{ sender_id }}">{{ sender_name }}</persName>
+               <placeName ref="#{{ sender_id_place }}">{{ sender_place }}</placeName>
+               <date>{{ send_date_written }}</date>
+            </correspAction>
+            <correspAction type="received">
+                <persName ref="#{{ receiver_id }}">{{ receiver_name }}</persName>
+                <placeName ref="#{{ receiver_id_place }}">{{ receiver_place }}</placeName>
+                <date>{{ receiver_date_written }}</date>
+            </correspAction>
+         </correspDesc>
+      </profileDesc>
+      <revisionDesc status="work in progress">
+         <change who="pandorfer" when="{{ current_date }}">template populated with script "create_templates.py"</change>
+      </revisionDesc>
+   </teiHeader>
+   <facsimile>
+{% for x in pages %}
+      <graphic url="{{ x.id }}"/>
+{% endfor %}
+      <graphic url="HS_AM23389Ba_R"/>
+   </facsimile>
+   <text type="letter">
+      <body>
+        {% for x in pages %}
+        <pb facs="{{ x.id }}" type="{{ x.p_type }}"/>
+  {% endfor %}
+      </body>
+   </text>
+</TEI>

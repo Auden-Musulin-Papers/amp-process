@@ -1,3 +1,9 @@
+# Project specific pattersn
+
+amp-transkript__*.xml
+amp-transkript__*.md
+Untitled.*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
