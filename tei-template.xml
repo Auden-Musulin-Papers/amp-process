@@ -88,12 +88,12 @@
          </langUsage>
          <correspDesc>
             <correspAction type="sent">
-               <persName ref="#{{ sender_id }}">{{ sender_name }}</persName>
+               <persName ref="#{{ sender_id }}">{{ sender }}</persName>
                <placeName ref="#{{ sender_id_place }}">{{ sender_place }}</placeName>
                <date>{{ send_date_written }}</date>
             </correspAction>
             <correspAction type="received">
-                <persName ref="#{{ receiver_id }}">{{ receiver_name }}</persName>
+                <persName ref="#{{ receiver_id }}">{{ receiver }}</persName>
                 <placeName ref="#{{ receiver_id_place }}">{{ receiver_place }}</placeName>
                 <date>{{ receiver_date_written }}</date>
             </correspAction>
