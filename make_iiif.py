@@ -41,7 +41,7 @@ for x in yield_img_dict(images):
         "type": "Canvas",
         "label": {
             "en": [
-                "random text"
+                f"ID: {x['id']}"
             ]
         },
         "height": x['height'],
