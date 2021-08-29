@@ -1,3 +1,4 @@
-pandas
-jinja2
 acdh-tei-pyutils
+jinja2
+pandas
+Pillow
