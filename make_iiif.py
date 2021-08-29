@@ -16,7 +16,7 @@ PROJECT_MD = {
         ]
     },
     "behavior": [
-        "paged"
+        "non-paged"
     ],
     "items": []
 }
