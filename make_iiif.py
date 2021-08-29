@@ -23,7 +23,7 @@ PROJECT_MD = {
 IMG_DIR = os.environ.get('IMG', '')
 glob_pattern = f"{IMG_DIR}/*.jpg"
 print(glob_pattern)
-images = glob.glob(glob_pattern)
+images = sorted(glob.glob(glob_pattern))
 
 
 def yield_img_dict(images):
