@@ -1,1 +1,2 @@
 export SHEETID=thegooglesheetidkey
+export IMG="$HOME/Documents/imgs_auden/jpg"
