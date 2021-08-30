@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xml:id="{{ id }}"
+   xml:id="{{ file_name }}"
    xml:base="https://id.acdh.oeaw.ac.at/auden-musulin-papers">
    <teiHeader>
       <fileDesc>
@@ -73,9 +73,10 @@
                   <msDesc>
                      <msIdentifier>
                         <country>A</country>
-                        <settlement>Wien</settlement>
-                        <repository>Theatermuseum</repository>
-                        <idno>HS AM 23389 Ba</idno>
+                        <settlement>St. Pölten</settlement>
+                        <repository>Landessammlungen Niederösterreich</repository>
+                        <collection>Stella Musulin (Depot)</collection>
+                        <idno>{{ idno }}</idno>
                      </msIdentifier>
                   </msDesc>
                </witness>
@@ -99,21 +100,24 @@
             </correspAction>
          </correspDesc>
       </profileDesc>
-      <revisionDesc status="work in progress">
+      <revisionDesc status="draft">
          <change who="pandorfer" when="{{ current_date }}">template populated with script "create_templates.py"</change>
       </revisionDesc>
    </teiHeader>
    <facsimile>
-{% for x in pages %}
-      <graphic url="{{ x.id }}"/>
-{% endfor %}
-      <graphic url="HS_AM23389Ba_R"/>
+{%- for x in pages %}
+      <surface ulx="0" uly="0" lrx="{{ x.width }}" lry="{{ x.height }}">
+         <graphic url="{{ x.url }}"/>
+      </surface>   
+{%- endfor %}
    </facsimile>
    <text type="letter">
       <body>
-        {% for x in pages %}
-        <pb facs="{{ x.id }}" type="{{ x.p_type }}"/>
-  {% endfor %}
+         <div xml:id="transcription">
+         {%- for x in pages %}
+            <pb facs="{{ x.url }}" type="{{ x.p_type }}"/>
+         {%- endfor %}
+         </div>
       </body>
    </text>
 </TEI>

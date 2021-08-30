@@ -26,6 +26,7 @@ def row_to_dict(df):
     row = df.iloc[0]
     item = {
         "id": row['id'],
+        "file_name": f"amp-transkript__{row['id']:04}.xml",
         "title": row['has_title'],
         # "sender": row['author'],
         "sender": "H. W. Auden",
@@ -34,7 +35,8 @@ def row_to_dict(df):
         "receiver_id": "sm",
         "lang_code": 'en',
         "language": "english",
-        "date": row['has_temporal_coverage'],
+        "date": row['has_created_start_date_original'],
+        "idno": row['archive_folder'],
         "pages": [],
         "current_date": f"{date.today()}"
     }
@@ -43,7 +45,8 @@ def row_to_dict(df):
 
 def create_templates(done, prefix="amp-transkript__"):
     for gr, df in done.groupby('document'):
-        file_name = f"{prefix}{gr}.xml"
+        file_name = f"{prefix}{int(gr):04}.xml"
+        print(file_name)
         item = row_to_dict(df)
         with open(file_name, 'w') as f:
             for i, row in df.iterrows():
@@ -52,7 +55,10 @@ def create_templates(done, prefix="amp-transkript__"):
                 item['pages'].append(
                     {
                         "id": scan_id_padd,
-                        "p_type": row['document_type']
+                        "p_type": row['document_type'],
+                        "width": row['width'],
+                        "height": row['height'],
+                        "url": f"https://iiif.acdh.oeaw.ac.at/amp/amp_{scan_id:04}/"
                     }
                 )
             f.write(template.render(**item))
