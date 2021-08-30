@@ -24,3 +24,12 @@ simple script which parses an image directory (set via env-variable `$IMG`) and 
 source .env
 python make_iiif.py
 ```
+
+## get image size
+
+script reading image size from binaries and writes them into a csv
+
+```shell
+source .env
+python get_image_size.py
+```
