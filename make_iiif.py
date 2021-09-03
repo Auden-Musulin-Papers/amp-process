@@ -29,9 +29,9 @@ SHEET_ID = os.environ.get('SHEETID')
 df = gsheet_to_df(SHEET_ID)
 
 
-for i, x in df.iterrows():
+for i, x in df[df['width'].notna()].iterrows():
     image_id = f"amp_{x['id']:04}"
-    label = f"{x['has_title']} ({x['document_type']}); ID: {image_id}"
+    label = f"{x['has_title']} ({x['carrier_type']}); ID: {image_id}"
     item = {
         "id": f"{PROJECT_URI}/canvas/{image_id}",
         "type": "Canvas",

@@ -55,7 +55,7 @@ def create_templates(done, prefix="amp-transkript__"):
                 item['pages'].append(
                     {
                         "id": scan_id_padd,
-                        "p_type": row['document_type'],
+                        "p_type": row['carrier_type'],
                         "width": row['width'],
                         "height": row['height'],
                         "url": f"https://iiif.acdh.oeaw.ac.at/amp/amp_{scan_id:04}/"

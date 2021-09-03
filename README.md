@@ -7,6 +7,16 @@ repo for processing scripts
 * set environemt variables, e.g. copy `.dumm-env` to `.env` modify it and run e.g `source .env`
 
 
+## copy_process.sh
+
+copies images from resource-share to local disc and converts and compresses them
+
+```shell
+source .env
+./copy_process.sh
+```
+
+
 ## create_templates.py
 
 simple script to create XML-TEI templates for each document
