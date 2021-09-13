@@ -43,7 +43,7 @@ def row_to_dict(df):
     return item
 
 
-def create_templates(done, prefix="amp-transkript__"):
+def create_templates(done, prefix="amp-transcript__"):
     for gr, df in done.groupby('document'):
         file_name = f"{prefix}{int(gr):04}.xml"
         print(file_name)
