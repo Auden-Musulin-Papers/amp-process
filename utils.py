@@ -27,16 +27,16 @@ def row_to_dict(df):
     item = {
         "id": row['id'],
         "file_name": f"amp-transkript__{row['id']:04}.xml",
-        "title": row['has_title'],
+        "title": row['title of item'],
         # "sender": row['author'],
-        "sender": "H. W. Auden",
-        "sender_id": "hwa",
+        "sender": "W. H. Auden",
+        "sender_id": "wha",
         "receiver": "Stella Musulin",
         "receiver_id": "sm",
         "lang_code": 'en',
-        "language": "english",
-        "date": row['has_created_start_date_original'],
-        "idno": row['archive_folder'],
+        "language": "English",
+        "date": row['date postmark'],
+        "idno": row['container'],
         "pages": [],
         "current_date": f"{date.today()}"
     }
