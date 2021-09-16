@@ -2,6 +2,8 @@
 
 amp-transkript__*.xml
 amp-transkript__*.md
+amp-transcript__*.xml
+
 Untitled.*
 
 # Byte-compiled / optimized / DLL files

@@ -25,17 +25,16 @@ def gsheet_to_df(sheet_id):
 def row_to_dict(df):
     row = df.iloc[0]
     item = {
-        "id": row['id'],
-        "file_name": f"amp-transkript__{row['id']:04}.xml",
-        "title": row['title of item'],
-        # "sender": row['author'],
-        "sender": "W. H. Auden",
+        "id": row['image_id'],
+        "file_name": f"amp-transkript__{row['image_id']:04}.xml",
+        "title": row['document_title'],
+        "sender": row['document_author'],
         "sender_id": "wha",
         "receiver": "Stella Musulin",
         "receiver_id": "sm",
         "lang_code": 'en',
         "language": "English",
-        "date": row['date postmark'],
+        "date": row['document_date'],
         "idno": row['container'],
         "pages": [],
         "current_date": f"{date.today()}"
@@ -44,20 +43,20 @@ def row_to_dict(df):
 
 
 def create_templates(done, prefix="amp-transcript__"):
-    for gr, df in done.groupby('document'):
+    for gr, df in done.groupby('document_id'):
         file_name = f"{prefix}{int(gr):04}.xml"
         print(file_name)
         item = row_to_dict(df)
         with open(file_name, 'w') as f:
             for i, row in df.iterrows():
-                scan_id = row["id"]
+                scan_id = row["image_id"]
                 scan_id_padd = f"amp-scan__{scan_id:04}.tif"
                 item['pages'].append(
                     {
                         "id": scan_id_padd,
-                        "p_type": row['carrier_type'],
-                        "width": row['width'],
-                        "height": row['height'],
+                        "p_type": row['object_type'],
+                        "width": row['image_width'],
+                        "height": row['image_height'],
                         "url": f"https://iiif.acdh.oeaw.ac.at/amp/amp_{scan_id:04}/"
                     }
                 )
