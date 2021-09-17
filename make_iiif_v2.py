@@ -43,40 +43,23 @@ for i, x in df[df['image_width'].notna()].iterrows():
     label = f"{x['document_title']} ({x['object_type']}); ID: {image_id}"
     item = {
         "@id": f"{PROJECT_URI}/canvas/{image_id}",
-        "@type": "Canvas",
-        "label": {
-            "en": [
-                f"{label}"
-            ]
-        },
+        "@type": "sc:Canvas",
+        "label": image_id,
         "height": x['image_width'],
         "width": x['image_width'],
-        "canvases": [
+        "images": [
             {
-                "@id": f"{PROJECT_URI}/",
-                "@type": "AnnotationPage",
-                "images": [
-                    {
-                        "@id": f"{PROJECT_URI}/{image_id}",
-                        "@type": "Annotation",
-                        "motivation": "painting",
-                        "body": {
-                            "@id": f"{IIIF_SERVER_URL}{image_id}/full/max/0/default.jpg",
-                            "@type": "Image",
-                            "format": "image/jpeg",
-                            "height": x['image_width'],
-                            "width": x['image_width'],
-                            "service": [
-                                {
-                                    "@id": f"{IIIF_SERVER_URL}{image_id}",
-                                    "@type": "ImageService3",
-                                    "profile": "level1"
-                                }
-                            ]
-                        },
-                        "target": f"{PROJECT_URI}/canvas/{image_id}"
-                    }
-                ]
+                "@id": f"{PROJECT_URI}/{image_id}",
+                "@type": "oa:Annotation",
+                "motivation": "sc:painting",
+                "resource": {
+                    "@id": f"{IIIF_SERVER_URL}{image_id}/full/max/0/default.jpg",
+                    "@type": "dctypes:Image",
+                    "format": "image/jpeg",
+                    "height": x['image_width'],
+                    "width": x['image_width'],
+                },
+                "on": f"{PROJECT_URI}/canvas/{image_id}"
             }
         ]
     }
