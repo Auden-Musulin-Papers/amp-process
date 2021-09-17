@@ -10,11 +10,7 @@ PROJECT_MD = {
     "@context": "http://iiif.io/api/presentation/2/context.json",
     "@id": "https://auden-musulin-papers.github.io/amp-process/manifest2.json",
     "@type": "sc:Manifest",
-    "label": {
-        "en": [
-            "Scans from Auden Musulin Project"
-        ]
-    },
+    "label": "Scans from Auden Musulin Project",
     "description": "Stella Musulin (1915-1996), née Stella Lloyd-Philipps, was a Welsh-Austrian writer, translator, journalist and broadcaster. Resident at the Musulin family estate at Schloss Fridau, Ober-Grafendorf, and Vienna, she was one of the closest friends of the Anglo-American poet W. H. Auden (1907-1973), with whom she corresponded frequently from the early 1960s, when Auden had settled in Kirchstetten, Lower Austria, until his death. The letters and literary papers by Auden preserved in Musulin’s estate provide revealing insights into one of Auden’s most prolific creative periods and Austria’s complex political, social and cultural history in the 1960s and 70s.",
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "attribution": "Austrian Centre for Digitial Humanities and Cultural Heritage",
