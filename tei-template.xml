@@ -63,6 +63,9 @@ for any purpose, even commercially.</p>
                         <collection>Stella Musulin (Depot)</collection>
                         <idno>{{ idno }}</idno>
                      </msIdentifier>
+                     <history>
+                        <origin><origDate{% if parsed_date %} when-iso="{{ parsed_date.strftime('%Y-%m-%d') }}" {% endif %}>{{ written_date }}</origDate></origin>
+                     </history>
                   </msDesc>
                </witness>
             </listWit>
@@ -72,18 +75,20 @@ for any purpose, even commercially.</p>
          <langUsage>
             <language ident="{{ lang_code }}">{{ language }}</language>
          </langUsage>
+         {% if is_letter %}
          <correspDesc>
             <correspAction type="sent">
                <persName ref="#{{ sender_id }}">{{ sender }}</persName>
                <placeName ref="#{{ sender_id_place }}">{{ sender_place }}</placeName>
-               <date>{{ send_date_written }}</date>
+               <date {% if parsed_date %} when-iso="{{ parsed_date.strftime('%Y-%m-%d') }}" {% endif %}>{{ written_date }}</date>
             </correspAction>
             <correspAction type="received">
                 <persName ref="#{{ receiver_id }}">{{ receiver }}</persName>
                 <placeName ref="#{{ receiver_id_place }}">{{ receiver_place }}</placeName>
-                <date>{{ receiver_date_written }}</date>
+                <date></date>
             </correspAction>
          </correspDesc>
+         {% endif %}
       </profileDesc>
       <revisionDesc status="draft">
          <change who="pandorfer" when="{{ current_date }}">template populated with script "create_templates.py"</change>

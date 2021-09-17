@@ -2,3 +2,5 @@ acdh-tei-pyutils
 jinja2
 pandas
 Pillow
+python-dateutil==2.8.2
+python-slugify==5.0.2

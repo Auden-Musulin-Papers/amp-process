@@ -3,6 +3,9 @@ import requests
 import jinja2
 from io import BytesIO
 from datetime import date
+from dateutil.parser import parse, ParserError
+from slugify import slugify
+
 
 TEMPLATE_FILE = "tei-template.xml"
 GDRIVE_BASE_URL = "https://docs.google.com/spreadsheet/ccc?key="
@@ -24,20 +27,32 @@ def gsheet_to_df(sheet_id):
 
 def row_to_dict(df):
     row = df.iloc[0]
+    doc_title = row['document_title']
+    if "Letter Signed W. H" in doc_title:
+        is_letter = True
+    else:
+        is_letter = False
+    written_date = row['document_date']
+    try:
+        parsed_date = parse(written_date)
+    except ParserError:
+        parsed_date = None
     item = {
         "id": row['image_id'],
         "file_name": f"amp-transkript__{row['image_id']:04}.xml",
         "title": row['document_title'],
         "sender": row['document_author'],
-        "sender_id": "wha",
-        "receiver": "Stella Musulin",
-        "receiver_id": "sm",
+        "sender_id": f"{slugify(row['document_author'])}",
+        "receiver": "Musulin, Stella",
+        "receiver_id": f"{slugify('Musulin, Stella')}",
         "lang_code": 'en',
         "language": "English",
-        "date": row['document_date'],
+        "written_date": written_date,
+        "parsed_date": parsed_date,
         "idno": row['container'],
         "pages": [],
-        "current_date": f"{date.today()}"
+        "current_date": f"{date.today()}",
+        "is_letter": is_letter
     }
     return item
 
