@@ -9,7 +9,7 @@ PROJECT_URI = "https://auden-musulin"
 PROJECT_MD = {
     "@context": "http://iiif.io/api/presentation/2/context.json",
     "@id": "https://auden-musulin-papers.github.io/amp-process/manifest2.json",
-    "@type": "Manifest",
+    "@type": "sc:Manifest",
     "label": {
         "en": [
             "Scans from Auden Musulin Project"
