@@ -29,9 +29,9 @@ SHEET_ID = os.environ.get('SHEETID')
 df = gsheet_to_df(SHEET_ID)
 
 
-for i, x in df[df['width'].notna()].iterrows():
-    image_id = f"amp_{x['id']:04}"
-    label = f"{x['has_title']} ({x['carrier_type']}); ID: {image_id}"
+for i, x in df[df['image_width'].notna()].iterrows():
+    image_id = f"amp_{x['image_id']:04}"
+    label = f"{x['document_title']} ({x['object_type']}); ID: {image_id}"
     item = {
         "id": f"{PROJECT_URI}/canvas/{image_id}",
         "type": "Canvas",
@@ -40,8 +40,8 @@ for i, x in df[df['width'].notna()].iterrows():
                 f"{label}"
             ]
         },
-        "height": x['height'],
-        "width": x['width'],
+        "height": x['image_width'],
+        "width": x['image_width'],
         "items": [
             {
                 "id": f"{PROJECT_URI}/",
@@ -55,8 +55,8 @@ for i, x in df[df['width'].notna()].iterrows():
                             "id": f"{IIIF_SERVER_URL}{image_id}/full/max/0/default.jpg",
                             "type": "Image",
                             "format": "image/jpeg",
-                            "height": x['height'],
-                            "width": x['width'],
+                            "height": x['image_width'],
+                            "width": x['image_width'],
                             "service": [
                                 {
                                     "id": f"{IIIF_SERVER_URL}{image_id}",
