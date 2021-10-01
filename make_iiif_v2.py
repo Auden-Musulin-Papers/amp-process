@@ -8,7 +8,7 @@ IIIF_SERVER_URL = "https://iiif.acdh.oeaw.ac.at/amp/"
 PROJECT_URI = "https://auden-musulin"
 PROJECT_MD = {
     "@context": "http://iiif.io/api/presentation/2/context.json",
-    "@id": "https://auden-musulin-papers.github.io/amp-process/manifestv2.json",
+    "@id": "https://raw.githubusercontent.com/Auden-Musulin-Papers/amp-process/main/manifestv2.json",
     "@type": "sc:Manifest",
     "label": "Scans from Auden Musulin Project",
     "description": "Stella Musulin (1915-1996), née Stella Lloyd-Philipps, was a Welsh-Austrian writer, translator, journalist and broadcaster. Resident at the Musulin family estate at Schloss Fridau, Ober-Grafendorf, and Vienna, she was one of the closest friends of the Anglo-American poet W. H. Auden (1907-1973), with whom she corresponded frequently from the early 1960s, when Auden had settled in Kirchstetten, Lower Austria, until his death. The letters and literary papers by Auden preserved in Musulin’s estate provide revealing insights into one of Auden’s most prolific creative periods and Austria’s complex political, social and cultural history in the 1960s and 70s.",
@@ -49,7 +49,7 @@ for i, x in df[df['image_width'].notna()].head(5).iterrows():
                 "@type": "oa:Annotation",
                 "motivation": "sc:painting",
                 "resource": {
-                    "@id": f"{IIIF_SERVER_URL}{image_id}/full/max/0/default.jpg",
+                    "@id": f"{IIIF_SERVER_URL}{image_id}/full/full/0/default.jpg",
                     "@type": "dctypes:Image",
                     "format": "image/jpeg",
                     "height": x['image_width'],
