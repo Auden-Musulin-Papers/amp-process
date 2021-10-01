@@ -34,7 +34,7 @@ SHEET_ID = os.environ.get('SHEETID')
 df = gsheet_to_df(SHEET_ID)
 
 
-for i, x in df[df['image_width'].notna()].head(5).iterrows():
+for i, x in df[df['image_width'].notna()].iterrows():
     image_id = f"amp_{x['image_id']:04}"
     label = f"{x['document_title']} ({x['object_type']}); ID: {image_id}"
     item = {
