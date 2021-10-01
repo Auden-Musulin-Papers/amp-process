@@ -39,7 +39,7 @@ def row_to_dict(df):
         parsed_date = None
     item = {
         "id": row['image_id'],
-        "file_name": f"amp-transkript__{row['image_id']:04}.xml",
+        "file_name": f"amp-transcript__{row['document_id']:04}.xml",
         "title": row['document_title'],
         "sender": row['document_author'],
         "sender_id": f"{slugify(row['document_author'])}",
@@ -62,6 +62,7 @@ def create_templates(done, prefix="amp-transcript__"):
         file_name = f"{prefix}{int(gr):04}.xml"
         print(file_name)
         item = row_to_dict(df)
+        file_name = item['file_name']
         with open(file_name, 'w') as f:
             for i, row in df.iterrows():
                 scan_id = row["image_id"]
