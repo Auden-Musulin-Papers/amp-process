@@ -1,5 +1,5 @@
 export SHEETID=1_rrlgVTWeymIivRX-gWjxduFYuSJzYkab-dXARXVOvI
 export IMG="$HOME/Documents/imgs_auden/jpg"
-export SOURCE="/mnt/600_imgs_tiff/imgs_auden"
+export SOURCE="/mnt/acdh_resources/container/R_amp_19479/600_imgs_tiff/imgs_auden"
 export IMG_TIF="$HOME/Documents/imgs_auden/tif"
 echo $IMG
