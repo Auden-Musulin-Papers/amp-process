@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 import jinja2
+import os
 from io import BytesIO
 from datetime import date
 from dateutil.parser import parse, ParserError
@@ -39,7 +40,7 @@ def row_to_dict(df):
         parsed_date = None
     item = {
         "id": row['image_id'],
-        "file_name": f"amp-transcript__{row['document_id']:04}.xml",
+        "file_name": f"amp-transcript__{int(row['document_id']):04}.xml",
         "title": row['document_title'],
         "sender": row['document_author'],
         "sender_id": f"{slugify(row['document_author'])}",
@@ -62,8 +63,9 @@ def create_templates(done, prefix="amp-transcript__"):
         file_name = f"{prefix}{int(gr):04}.xml"
         print(file_name)
         item = row_to_dict(df)
-        file_name = item['file_name']
-        with open(file_name, 'w') as f:
+        file_name2 = item['file_name']
+        os.makedirs("tei", exist_ok=True)
+        with open(os.path.join("tei", file_name), 'w') as f:
             for i, row in df.iterrows():
                 scan_id = row["image_id"]
                 scan_id_padd = f"amp-scan__{scan_id:04}.tif"
